@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "birthday": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The user's date of birth as a timestamp.",
+      "example": "2024-09-11T00:00:00-04:00"
+    },
+    "created_time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The timestamp when the user was created in the system.",
+      "example": "2024-09-23T21:51:55-04:00"
+    },
+    "display_name": {
+      "type": "string",
+      "description": "The display name of the user.",
+      "example": "Thomas"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "The email address of the user.",
+      "example": "tawilliams1@uri.edu"
+    },
+    "favorite_food": {
+      "type": "string",
+      "description": "The user's favorite food.",
+      "example": "Pizza"
+    },
+    "uid": {
+      "type": "string",
+      "description": "Unique identifier for the user.",
+      "example": "f0QBqsp8zSW7GfjuelEH3w4pswk1"
+    }
+  },
+  "required": ["birthday", "created_time", "display_name", "email", "uid"],
+  "additionalProperties": false
+}
