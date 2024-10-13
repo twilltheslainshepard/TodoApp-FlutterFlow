@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'login_widget.dart' show LoginWidget;
 import 'package:flutter/material.dart';
@@ -100,6 +101,9 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
 
     return null;
   }
+
+  // Stores action output result for [Backend Call - API (Mailtrap)] action in signup-Button widget.
+  ApiCallResponse? apiResult7po;
 
   @override
   void initState(BuildContext context) {

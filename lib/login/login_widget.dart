@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -745,6 +746,7 @@ class _LoginWidgetState extends State<LoginWidget>
                         if (_model.tabBarCurrentIndex == 0)
                           FFButtonWidget(
                             onPressed: () async {
+                              var shouldSetState = false;
                               if (_model.formKey2.currentState == null ||
                                   !_model.formKey2.currentState!.validate()) {
                                 return;
@@ -786,6 +788,33 @@ class _LoginWidgetState extends State<LoginWidget>
 
                               context.goNamedAuth(
                                   'onboarding', context.mounted);
+
+                              _model.apiResult7po = await MailtrapCall.call(
+                                recipientEmail: _model
+                                    .sIgnupEmailAddressTextController.text,
+                              );
+
+                              shouldSetState = true;
+                              if ((_model.apiResult7po?.succeeded ?? true)) {
+                                if (shouldSetState) safeSetState(() {});
+                                return;
+                              }
+
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    'Error: welcome mail not sent',
+                                    style: TextStyle(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                    ),
+                                  ),
+                                  duration: const Duration(milliseconds: 4000),
+                                  backgroundColor:
+                                      FlutterFlowTheme.of(context).secondary,
+                                ),
+                              );
+                              if (shouldSetState) safeSetState(() {});
                             },
                             text: 'Sign up',
                             options: FFButtonOptions(
